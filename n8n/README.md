@@ -4,6 +4,8 @@ A picture-by-picture walkthrough for no-code builders. One HTTP Request tool, on
 
 No Python. No SDK. No prompt rewrites.
 
+> **Live docs:** [ejentum.com/docs/n8n_guide](https://ejentum.com/docs/n8n_guide) — same content with site navigation and one-click downloads. This repo is the source of truth; the website mirrors it.
+
 ---
 
 ## What changes when Ejentum is in the loop

@@ -4,6 +4,8 @@ A picture-by-picture walkthrough for developers. Five markdown files. One env fi
 
 No MCP server. No plugin. No extension.
 
+> **Live docs:** [ejentum.com/docs/claude_code_guide](https://ejentum.com/docs/claude_code_guide) — same content with site navigation and one-click skill downloads. This repo is the source of truth; the website mirrors it.
+
 ---
 
 ## What this gives you
