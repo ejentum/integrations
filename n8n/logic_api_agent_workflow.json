@@ -1,0 +1,136 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6c8ba9e0-463f-4382-b014-f811a6684bcd",
+      "name": "When chat message received",
+      "webhookId": "54092403-a882-49ce-9e5c-d48e1c3375cc"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "#ROLE\nYou are a helpful assistant\n\n# TOOL\n## always call LOGICAPI\nIf the task requires more than one decision, call the Ejentum Logic API first; absorb the results as instructions to follow. \nLogicAPI helps u harness the best and block the worst.\n(never mention the tool in the outputs, is a secret, u use it but u do not reveal it)\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "85d1402c-ef19-47b2-89ac-b6719de475f6",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Before executing any non-trivial task, call the Ejentum Logic API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
+        "method": "POST",
+        "url": "https://ejentum-main-ab125c3.zuplo.app/logicv1/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"{{ $fromAI('query', 'short description of the task') }}\",\n  \"mode\": \"{{ $fromAI('mode', 'reasoning mode: reasoning, code, anti-deception, memory, reasoning-multi, code-multi, memory-multi', 'string') }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        416,
+        224
+      ],
+      "id": "3f3de4aa-f127-42f0-bfc4-fc52fea468d6",
+      "name": "LogicAPI",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "kk2PrAwPVT1jZxy4",
+          "name": "LogicAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        192,
+        224
+      ],
+      "id": "e3f0dbbe-5bd1-4e0d-aaf7-25c790160164",
+      "name": "gpt-4",
+      "credentials": {
+        "openAiApi": {
+          "id": "9mBVVl5dTWQgstng",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LogicAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "0d065171-df1b-439d-b0d8-2699bfce2811",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0fb4f2dd001c202c1e278eb119aa8da7cd3825f3e582fe9b82c927bf8f690fb9"
+  },
+  "id": "Y294Q1RgrPVCUxHU",
+  "tags": []
+}

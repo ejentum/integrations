@@ -1,0 +1,53 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "toolDescription": "Before executing any non-trivial task, call the Ejentum Logic API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
+        "method": "POST",
+        "url": "https://ejentum-main-ab125c3.zuplo.app/logicv1/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"{{ $fromAI('query', 'short description of the task') }}\",\n  \"mode\": \"{{ $fromAI('mode', 'reasoning mode: reasoning, code, anti-deception, memory, reasoning-multi, code-multi, memory-multi', 'string') }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        608,
+        224
+      ],
+      "id": "3f3de4aa-f127-42f0-bfc4-fc52fea468d6",
+      "name": "LogicAPI",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "kk2PrAwPVT1jZxy4",
+          "name": "LogicAPI"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "LogicAPI": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "936d0bf5-e6a6-4d8d-b4f0-463a775671db",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0fb4f2dd001c202c1e278eb119aa8da7cd3825f3e582fe9b82c927bf8f690fb9"
+  },
+  "id": "Y294Q1RgrPVCUxHU",
+  "tags": []
+}
