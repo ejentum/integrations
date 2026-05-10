@@ -13,6 +13,10 @@ Your agent POSTs a task description and a mode. The API returns a structured cog
 
 Each subfolder has a README with picture-by-picture install walkthrough and downloadable assets.
 
+### Standalone MCP server
+
+For agentic IDEs that speak the Model Context Protocol (Claude Code, Cursor, Cline, Windsurf, Continue), there's also a packaged MCP server: [github.com/ejentum/ejentum-mcp](https://github.com/ejentum/ejentum-mcp). One-line install via `npx -y ejentum-mcp`, set `EJENTUM_API_KEY`, and the four harness modes appear as MCP tools the agent can call. Same `/skills/` files as `/claude-code` here, plus editor-rules adapters for Cursor/Windsurf/Cline at `/editors/`.
+
 ## Other frameworks
 
 | Framework | Docs |
