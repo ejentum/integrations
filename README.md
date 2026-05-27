@@ -1,6 +1,6 @@
 # Ejentum Integrations
 
-Official integration guides and skill files for the [Ejentum Logic API](https://ejentum.com) — a runtime reasoning harness for AI agents.
+Official integration guides and skill files for the [Ejentum Logic API](https://ejentum.com), the Reasoning Harness for Agentic AI.
 
 Your agent POSTs a task description and a mode. The API returns a structured cognitive injection (failure pattern to avoid, procedure to follow, verification criterion, suppress/amplify signals). Your agent absorbs the injection and writes from it. 679 engineered abilities across four modes: reasoning, code, anti-deception, memory.
 
@@ -13,19 +13,42 @@ Your agent POSTs a task description and a mode. The API returns a structured cog
 
 Each subfolder has a README with picture-by-picture install walkthrough and downloadable assets.
 
-### Standalone MCP server
+## Native packages
 
-For agentic IDEs that speak the Model Context Protocol (Claude Code, Cursor, Cline, Windsurf, Continue), there's also a packaged MCP server: [github.com/ejentum/ejentum-mcp](https://github.com/ejentum/ejentum-mcp). One-line install via `npx -y ejentum-mcp`, set `EJENTUM_API_KEY`, and the four harness modes appear as MCP tools the agent can call. Same `/skills/` files as `/claude-code` here, plus editor-rules adapters for Cursor/Windsurf/Cline at `/editors/`.
+Standalone packages on PyPI and npm, one per host framework. Each speaks its host's native idiom; pick the one that matches your stack.
 
-## Other frameworks
+### Python (PyPI)
 
-| Framework | Docs |
+| Framework | Install | Repo |
+|---|---|---|
+| CrewAI | `pip install crewai-ejentum` | [crewai-ejentum](https://github.com/ejentum/crewai-ejentum) |
+| Agno | `pip install agno-ejentum` | [agno-ejentum](https://github.com/ejentum/agno-ejentum) |
+| PydanticAI | `pip install pydantic-ai-ejentum` | [pydantic-ai-ejentum](https://github.com/ejentum/pydantic-ai-ejentum) |
+| HuggingFace smolagents | `pip install smolagents-ejentum` | [smolagents-ejentum](https://github.com/ejentum/smolagents-ejentum) |
+| LangChain | `pip install langchain-ejentum` | [langchain-ejentum](https://github.com/ejentum/langchain-ejentum) |
+| Letta | `pip install letta-ejentum` | [letta-ejentum](https://github.com/ejentum/letta-ejentum) |
+| Microsoft AutoGen | `pip install autogen-ejentum` | [autogen-ejentum](https://github.com/ejentum/autogen-ejentum) |
+| LlamaIndex | (PyPI registration pending) | [llama-index-tools-ejentum](https://github.com/ejentum/llama-index-tools-ejentum) |
+
+### TypeScript / JavaScript (npm)
+
+| Framework | Install | Repo |
+|---|---|---|
+| Vercel AI SDK | `npm install ejentum-ai` | [ejentum-ai](https://github.com/ejentum/ejentum-ai) |
+| Mastra | `npm install ejentum-mastra` | [ejentum-mastra](https://github.com/ejentum/ejentum-mastra) |
+| LangGraph.js | `npm install ejentum-langgraph` | [ejentum-langgraph](https://github.com/ejentum/ejentum-langgraph) |
+| Firebase Genkit | `npm install ejentum-genkit` | [ejentum-genkit](https://github.com/ejentum/ejentum-genkit) |
+| n8n (community node) | `npm install n8n-nodes-ejentum` | [n8n-nodes-ejentum](https://github.com/ejentum/n8n-nodes-ejentum) |
+
+### Agentic IDEs and editors
+
+| Tool | How |
 |---|---|
-| LangChain / LangGraph | https://ejentum.com/docs/integrations#langchain |
-| CrewAI | https://ejentum.com/docs/integrations#crewai |
-| Cursor / Windsurf / Codex | https://ejentum.com/docs/integrations#agentic-ides |
-| Make.com | https://ejentum.com/docs/integrations#makecom |
-| Any framework (universal pattern) | https://ejentum.com/docs/integrations#universal-pattern |
+| Cursor, Claude Code, Windsurf, Continue, Cline, n8n MCP Client | `npx -y ejentum-mcp` (also one-click via Smithery, Glama, mcp.so) |
+| Anthropic Claude Code plugin directory | Install from the directory UI (Published 2026-05-22) |
+| Zed editor | Install **Ejentum** from Zed Extensions |
+| Cursor / Windsurf / Cline rules files | Adapters under [`ejentum-mcp/editors/`](https://github.com/ejentum/ejentum-mcp/tree/main/editors) |
+| Codex CLI | `.codex-plugin/plugin.json` shipped with `ejentum-mcp` |
 
 If you want an integration that isn't here yet, open an issue.
 
