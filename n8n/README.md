@@ -52,7 +52,7 @@ Prefer to build it yourself? Keep reading.
 
 1. An **n8n instance** (cloud or self-hosted, 1.60+ for AI Agent support).
 2. An **existing AI Agent workflow**, or a new one with any chat model (OpenAI, Claude, Gemini all work).
-3. An **Ejentum API key**. Grab one from [the dashboard](https://ejentum.com/dashboard). Free tier includes 100 calls total (one-time, no credit card). Ki: 5,000 calls/month. Haki: 10,000 calls/month + the `-multi` modes.
+3. An **Ejentum API key**. Grab one from [the dashboard](https://ejentum.com/dashboard). Free tier includes 30-day trial (one-time, no credit card). Ki: 5,000 calls/month. Super: 10,000 calls/month + the `-multi` modes.
 
 > Getting the key: sign in, open the **Account** tab, click **Generate Key** under API Keys. Copy the full key (starts with `zpka_...`). You'll paste it in Step 4.
 
@@ -81,7 +81,7 @@ A new HTTP Request node hangs off the Tool socket. This is what your click in St
 Fill these four fields exactly:
 
 - **Method:** `POST`
-- **URL:** `https://ejentum-main-ab125c3.zuplo.app/logicv1/`
+- **URL:** `https://api.ejentum.com/harness/`
 - **Authentication:** `Generic Credential Type`
 - **Generic Auth Type:** `Header Auth`
 
@@ -128,7 +128,7 @@ Scroll down. Toggle **Send Body** **ON**. Set **Body Content Type** to `JSON`. S
 Scroll back up to the **Description** field. This is the most important field in the whole setup: it tells the agent **when** to call the tool and **which modes exist**. Without it, the agent either never calls Ejentum or picks the wrong mode.
 
 ```
-Call this before executing any non-trivial task. Pass a short task description and the mode that matches the work. Returns a structured reasoning injection with [NEGATIVE GATE] (failure pattern to avoid), [PROCEDURE] (step-by-step reasoning), [REASONING TOPOLOGY] (execution DAG), and [FALSIFICATION TEST] (verification). Inject the returned text into your own reasoning context BEFORE executing the task. Modes: 'reasoning' (general analytical tasks, default), 'code' (code generation or refactoring), 'anti-deception' (blocks sycophancy, hallucination, prompt injection), 'memory' (perception and state tracking), 'reasoning-multi' (complex cross-domain tasks, Haki tier), 'code-multi' (Haki tier), 'memory-multi' (Haki tier).
+Call this before executing any non-trivial task. Pass a short task description and the mode that matches the work. Returns a structured reasoning injection with [NEGATIVE GATE] (failure pattern to avoid), [PROCEDURE] (step-by-step reasoning), [REASONING TOPOLOGY] (execution DAG), and [FALSIFICATION TEST] (verification). Inject the returned text into your own reasoning context BEFORE executing the task. Modes: 'reasoning' (general analytical tasks, default), 'code' (code generation or refactoring), 'anti-deception' (blocks sycophancy, hallucination, prompt injection), 'memory' (perception and state tracking), 'reasoning-multi' (complex cross-domain tasks, Super tier), 'code-multi' (Super tier), 'memory-multi' (Super tier).
 ```
 
 > **Two layers of instruction, don't confuse them.** The **Description** (here, on the tool node) tells the agent *what the tool does and when to use it*. The **System Message** (on the AI Agent node, Step 6) tells the agent *how to treat what it gets back*. Both must be set; one without the other doesn't work.
@@ -142,7 +142,7 @@ Open the **AI Agent** node. Scroll to **System Message**. Paste:
 ```
 # TOOL
 ## LOGICAPI
-If the task requires more than one decision, call the Ejentum Logic API first; absorb the results as instructions to follow.
+If the task requires more than one decision, call the Ejentum API first; absorb the results as instructions to follow.
 LogicAPI helps u harness the best and block the worst.
 ```
 
@@ -205,11 +205,11 @@ You don't pick manually; the agent picks via `$fromAI('mode', ...)`. This table 
 | `code` | Code generation, refactoring, architecture | Ki |
 | `anti-deception` | Blocking sycophancy, hallucination, prompt injection | Ki |
 | `memory` | Perception, state tracking, behavioral calibration | Ki |
-| `reasoning-multi` | Complex cross-domain reasoning | Haki |
-| `code-multi` | Multi-file or multi-domain code work | Haki |
-| `memory-multi` | Deep perceptual + stateful reasoning | Haki |
+| `reasoning-multi` | Complex cross-domain reasoning | Super |
+| `code-multi` | Multi-file or multi-domain code work | Super |
+| `memory-multi` | Deep perceptual + stateful reasoning | Super |
 
-All four Ki modes are also accessible on the Free tier (100 calls total, no credit card). Haki adds the three `-multi` modes.
+All four Ki modes are also accessible on the Free tier (30-day trial, no credit card). Super adds the three `-multi` modes.
 
 If in doubt, the agent picks `reasoning`. That's the right default for roughly 80% of tasks.
 
@@ -241,7 +241,7 @@ Each of these is one tool, one system message, no branching. Copy the pattern.
 
 **Agent calls the tool but ignores the response.** The system message in Step 6 is the fix: it must explicitly say *follow the* `[PROCEDURE]` *and verify against the* `[FALSIFICATION TEST]`. Without that, the agent treats the response as optional context.
 
-**Rate limit (429).** Free tier is 100 calls total (one-time). [Upgrade to Ki](https://ejentum.com/pricing) for 5,000 calls/month, or Haki for 10,000 calls/month plus the `-multi` modes.
+**Rate limit (429).** Free tier is 30-day trial (one-time). [Upgrade to Ki](https://ejentum.com/pricing) for 5,000 calls/month, or Super for 10,000 calls/month plus the `-multi` modes.
 
 ---
 

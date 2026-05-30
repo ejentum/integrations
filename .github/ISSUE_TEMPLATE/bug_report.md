@@ -29,7 +29,7 @@ Which folder, which framework version:
 
 - OS:
 - Framework version:
-- Ejentum API plan (Free / Ki / Haki):
+- Ejentum API plan (Free / Ki / Super):
 - Using env var `$EJENTUM_API_KEY` or literal key:
 
 ## Anything else

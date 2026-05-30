@@ -1,6 +1,6 @@
 # Contributing
 
-This repo hosts integration guides and skill files for the [Ejentum Logic API](https://ejentum.com). Contributions welcome.
+This repo hosts integration guides and skill files for the [Ejentum API](https://ejentum.com). Contributions welcome.
 
 ## What belongs here
 
@@ -11,7 +11,7 @@ This repo hosts integration guides and skill files for the [Ejentum Logic API](h
 
 ## What doesn't
 
-- The Ejentum Logic API core (closed source)
+- The Ejentum API core (closed source)
 - The ability corpus (internal)
 - Benchmarks (lives in [ejentum/benchmarks](https://github.com/ejentum/benchmarks))
 - Anything requiring API key secrets in committed files

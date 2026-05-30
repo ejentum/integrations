@@ -1,6 +1,6 @@
 # Ejentum Integrations
 
-Official integration guides and skill files for the [Ejentum Logic API](https://ejentum.com), the Reasoning Harness for Agentic AI.
+Official integration guides and skill files for the [Ejentum API](https://ejentum.com), the Reasoning Harness for Agentic AI.
 
 Your agent POSTs a task description and a mode. The API returns a structured cognitive injection (failure pattern to avoid, procedure to follow, verification criterion, suppress/amplify signals). Your agent absorbs the injection and writes from it. 679 engineered abilities across four modes: reasoning, code, anti-deception, memory.
 
@@ -54,9 +54,9 @@ If you want an integration that isn't here yet, open an issue.
 
 ## Getting an API key
 
-Free tier: 100 calls, no card. Generate at [ejentum.com/dashboard](https://ejentum.com/dashboard).
+Free tier: 30-day trial, no card. Generate at [ejentum.com/dashboard](https://ejentum.com/dashboard).
 
-Paid: Ki €19/mo (5,000 calls), Haki €49/mo (10,000 calls + multi-mode). See [pricing](https://ejentum.com/pricing).
+Paid: Ki €19/mo (5,000 calls), Super €49/mo (10,000 calls + multi-mode). See [pricing](https://ejentum.com/pricing).
 
 ## Benchmarks and evidence
 

@@ -36,7 +36,7 @@ Prefer to browse the files before installing? Each skill page has its own Downlo
 
 1. **Claude Code installed** (CLI, desktop app, or VS Code extension; all work).
 2. **An empty or test workspace** for the first install. You can add this to existing workspaces later.
-3. **An Ejentum API key**. Grab one from [the dashboard](https://ejentum.com/dashboard). Free tier includes 100 calls total (one-time, no credit card). Ki: 5,000 calls/month. Haki: 10,000 calls/month plus the `-multi` modes.
+3. **An Ejentum API key**. Grab one from [the dashboard](https://ejentum.com/dashboard). Free tier includes 30-day trial (one-time, no credit card). Ki: 5,000 calls/month. Super: 10,000 calls/month plus the `-multi` modes.
 
 ---
 
@@ -56,7 +56,7 @@ Unzip the bundle (or drop the five individually downloaded files) into the works
 
 ```
 EJENTUM_API_KEY=your_key_here
-EJENTUM_API_URL=https://ejentum-main-ab125c3.zuplo.app/logicv1/
+EJENTUM_API_URL=https://api.ejentum.com/harness/
 ```
 
 ![Workspace with 5 skill files + env file in the sidebar, ready state before pasting the install prompt in Step 3](./screenshots/02-files-dropped-prompt.webp)
@@ -155,13 +155,13 @@ You don't pick; Claude does. Use this table for your own mental model and to wri
 | `code` | Code generation, debugging, review, architecture | Ki |
 | `anti-deception` | Pressure to validate, unverified authority, factual claims under social pressure | Ki |
 | `memory` | Cross-turn state shifts, implicit cues, observation sharpening | Ki |
-| `reasoning-multi` | Cross-domain reasoning (causal + temporal + spatial, etc.) | Haki |
-| `code-multi` | Multi-file or cross-cutting code work | Haki |
-| `memory-multi` | Multi-dimensional perceptual + state tracking | Haki |
+| `reasoning-multi` | Cross-domain reasoning (causal + temporal + spatial, etc.) | Super |
+| `code-multi` | Multi-file or cross-cutting code work | Super |
+| `memory-multi` | Multi-dimensional perceptual + state tracking | Super |
 
 Cross-domain tasks stack: Claude calls two harnesses in sequence and absorbs both injections before replying. See Turn 1 above.
 
-All four Ki modes are also accessible on the Free tier (100 calls total, no credit card). Haki adds the three `-multi` modes.
+All four Ki modes are also accessible on the Free tier (30-day trial, no credit card). Super adds the three `-multi` modes.
 
 ---
 
@@ -177,7 +177,7 @@ All four Ki modes are also accessible on the Free tier (100 calls total, no cred
 
 **"I called the API" narration in the reply.** Same root cause as above. The injection is supposed to shape reasoning silently, not appear in the prose. Re-download and reinstall.
 
-**Rate limit (429).** Free tier is 100 calls total (one-time). [Upgrade to Ki](https://ejentum.com/pricing) for 5,000/month, or Haki for 10,000/month plus the `-multi` modes.
+**Rate limit (429).** Free tier is 30-day trial (one-time). [Upgrade to Ki](https://ejentum.com/pricing) for 5,000/month, or Super for 10,000/month plus the `-multi` modes.
 
 ---
 

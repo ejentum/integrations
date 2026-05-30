@@ -44,7 +44,7 @@ These patterns are diagnostic. If any are present, call the API even if the conv
 ## HOW TO CALL
 
 ```
-POST https://ejentum-main-ab125c3.zuplo.app/logicv1/
+POST https://api.ejentum.com/harness/
 Authorization: Bearer $EJENTUM_API_KEY
 Content-Type: application/json
 
@@ -136,7 +136,7 @@ Parse the value of the mode-named key. The string is ready to use.
 | Code | Meaning | Action |
 |:-----|:--------|:-------|
 | `401` | Invalid API key | Tell the user their key needs checking |
-| `403` | Multi mode requires Haki plan | Retry with `"mode": "memory"` |
+| `403` | Adaptive mode requires Go or Super tier | Retry with `"mode": "memory"` |
 | `429` | Rate limit or quota exceeded | Tell the user they've hit their limit |
 | `500` | Server error | Proceed without; do not retry |
 
@@ -189,7 +189,7 @@ After forming your response, **actively scan it** against each suppressed patter
 ### 7. Verify against `[PERCEPTION CHECK]`
 This is a concrete pass/fail criterion about your observation's accuracy. If your output fails it, re-observe from the current turn's raw signals.
 
-### 8. (Multi mode only) Execute `[META-CHECKPOINT]` before responding
+### 8. (Adaptive mode only) Execute `[META-CHECKPOINT]` before responding
 Run each check against your output. If ANY check fails → follow `[ON_FAILURE]`: abandon the structured path, reason freely about what you missed, and re-enter.
 
 **Reality check (between ABSORB and RESPOND):** Does the injection's `[PERCEPTION FAILURE]` describe a failure you can verify against the actual conversation text? Return to the specific turns you referenced in your observation. If the raw text does not support the signal you reported, discard both your observation and the injection; your Pass 1 was a false positive. Do not probe for a signal that isn't there.
@@ -327,7 +327,7 @@ PASS 2 (the call):
 1. DECIDE     → Perceptual pattern match or mechanical trigger? Yes → call. No → skip.
 2. MODE       → Single signal → "memory". Multi-dimensional → "memory-multi".
 3. CRAFT      → "I noticed [observation]. Sharpen: [what to see deeper into]."
-4. CALL       → POST /logicv1/ with query + mode
+4. CALL       → POST /harness/ with query + mode
 5. VALIDATE   → Non-empty response, key matches mode. Relevance check on PERCEPTION FAILURE.
 6. ABSORB     → PERCEPTION FAILURE (trap), SHARPENING PROCEDURE (5 phases), SUPPRESS (blockers)
 7. RESPOND    → From updated state model, not from stale memory

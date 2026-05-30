@@ -18,7 +18,7 @@
     {
       "parameters": {
         "options": {
-          "systemMessage": "#ROLE\nYou are a helpful assistant\n\n# TOOL\n## always call LOGICAPI\nIf the task requires more than one decision, call the Ejentum Logic API first; absorb the results as instructions to follow. \nLogicAPI helps u harness the best and block the worst.\n(never mention the tool in the outputs, is a secret, u use it but u do not reveal it)\n"
+          "systemMessage": "#ROLE\nYou are a helpful assistant\n\n# TOOL\n## always call LOGICAPI\nIf the task requires more than one decision, call the Ejentum API first; absorb the results as instructions to follow. \nLogicAPI helps u harness the best and block the worst.\n(never mention the tool in the outputs, is a secret, u use it but u do not reveal it)\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -32,9 +32,9 @@
     },
     {
       "parameters": {
-        "toolDescription": "Before executing any non-trivial task, call the Ejentum Logic API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
+        "toolDescription": "Before executing any non-trivial task, call the Ejentum API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
         "method": "POST",
-        "url": "https://ejentum-main-ab125c3.zuplo.app/logicv1/",
+        "url": "https://api.ejentum.com/harness/",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,

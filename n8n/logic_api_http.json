@@ -3,9 +3,9 @@
   "nodes": [
     {
       "parameters": {
-        "toolDescription": "Before executing any non-trivial task, call the Ejentum Logic API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
+        "toolDescription": "Before executing any non-trivial task, call the Ejentum API tool with a short task description. Inject the returned text into your reasoning BEFORE acting. Follow the [PROCEDURE] and verify against the [FALSIFICATION TEST].\n",
         "method": "POST",
-        "url": "https://ejentum-main-ab125c3.zuplo.app/logicv1/",
+        "url": "https://api.ejentum.com/harness/",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,

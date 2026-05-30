@@ -1,6 +1,6 @@
 ---
 name: ejentum-unified
-description: Router for the Ejentum Logic API. Use when you need to decide which cognitive harness to call (reasoning, code, anti-deception, memory) for a given task, how to stack two harnesses for multi-dimensional tasks, or how to read the cross-mode response shape. Start here if you are a multi-mode generalist or the task spans dimensions.
+description: Router for the Ejentum API. Use when you need to decide which cognitive harness to call (reasoning, code, anti-deception, memory) for a given task, how to stack two harnesses for multi-dimensional tasks, or how to read the cross-mode response shape. Start here if you are a multi-mode generalist or the task spans dimensions.
 ---
 
 # Ejentum Skill File
@@ -13,7 +13,7 @@ Four harnesses, one router. This file handles routing and stacking. For mode-spe
 
 ## THE FOUR HARNESSES
 
-| Harness | Mode (Ki) | Mode (Haki) | Abilities | What it augments | Deep file |
+| Harness | Mode (Ki) | Mode (Super) | Abilities | What it augments | Deep file |
 |---|---|---|---|---|---|
 | Reasoning | `reasoning` | `reasoning-multi` | 311 | Analytical depth across 6 cognitive dimensions | [skill_reasoning](/docs/skill_reasoning) |
 | Code | `code` | `code-multi` | 128 | Engineering discipline across 13 disciplines | [skill_code](/docs/skill_code) |
@@ -56,14 +56,14 @@ Classify the task. Pick the mode that matches.
 - Known standard patterns (CRUD, imports, config)
 - Any task completable in 1-2 confident steps
 
-**Haki upgrade:** use the `-multi` variant when the task is cross-domain (e.g. `code-multi` for a refactor spanning API + DB + frontend, `reasoning-multi` for supply-chain analysis with causal + temporal + spatial dimensions). Anti-deception has no multi variant.
+**Super upgrade:** use the `-multi` variant when the task is cross-domain (e.g. `code-multi` for a refactor spanning API + DB + frontend, `reasoning-multi` for supply-chain analysis with causal + temporal + spatial dimensions). Anti-deception has no multi variant.
 
 ---
 
 ## HOW TO CALL
 
 ```bash
-curl -s -X POST "https://ejentum-main-ab125c3.zuplo.app/logicv1/" \
+curl -s -X POST "https://api.ejentum.com/harness/" \
   -H "Authorization: Bearer $EJENTUM_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"query": "<task in one sentence, with the failure risk to avoid>", "mode": "<mode>"}' \
@@ -77,7 +77,7 @@ If the API is unreachable or returns an error, proceed with native capability. T
 | Code | Meaning | Action |
 |---|---|---|
 | `401` | Invalid API key | Tell the user |
-| `403` | Multi mode requires Haki plan | Retry with the single-mode equivalent |
+| `403` | Adaptive mode requires Go or Super tier | Retry with the single-mode equivalent |
 | `429` | Rate limit or quota exceeded | Tell the user |
 | `500` | Server error | Proceed without; do not retry |
 
@@ -109,7 +109,7 @@ Some tasks span two dimensions. Call both modes, inject both responses in sequen
 | Multi-turn coaching needing honest assessment | `memory` + `anti-deception` | Memory tracks emotional and state shifts; anti-deception prevents comforting instead of challenging |
 | Analysis where stale context could contaminate reasoning | `memory` + `reasoning` | Memory updates the state model; reasoning operates on the updated model, not stale facts |
 
-Inject the primary mode's response first, secondary's second. Each task gets one primary and optionally one secondary. The Logic API is called twice; both injections sit in context at the same time.
+Inject the primary mode's response first, secondary's second. Each task gets one primary and optionally one secondary. The Ejentum API is called twice; both injections sit in context at the same time.
 
 ---
 
