@@ -44,7 +44,7 @@ Standalone packages on PyPI and npm, one per host framework. Each speaks its hos
 
 | Tool | How |
 |---|---|
-| Cursor, Claude Code, Windsurf, Continue, Cline, n8n MCP Client | `npx -y ejentum-mcp` (also one-click via Smithery, Glama, mcp.so) |
+| Cursor, Claude Code, Windsurf, Continue, Cline, n8n MCP Client | `npx -y ejentum-mcp` (also listed on Glama and mcp.so) |
 | Anthropic Claude Code plugin directory | Install from the directory UI (Published 2026-05-22) |
 | Zed editor | Install **Ejentum** from Zed Extensions |
 | Cursor / Windsurf / Cline rules files | Adapters under [`ejentum-mcp/editors/`](https://github.com/ejentum/ejentum-mcp/tree/main/editors) |
